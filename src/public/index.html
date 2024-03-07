@@ -1,54 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>Chat con socket.IO</title>
+    <title>Página Principal</title>
     <style>
-        body { background-color: #42a775; margin: 0; padding: 0; }
-        #chat { list-style-type: none; margin: 0; padding: 0; }
-        #chat li { padding: 10px 10 px; }
-        #chat li:nth-child(odd) { background-color: #eee; }
-        #message { width: 100%; line-height: 20px; margin: 10px 0; padding: 5px 10px; }
-        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F5F5DC;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            font-family: 'Arial', sans-serif;
+            color: #bfb6ff;
+            text-align: center;
+        }
+        a {
+            display: block;
+            width: 200px;
+            height: 50px;
+            background-color: #B0A999;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+            margin: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
     </style>
-
-    <script> "Sala de chat" </script>
-
-  </head>
+</head>
 <body>
-   
-<body>
-    <ul id="'Chat"></ul>
-    <form action="">
-        <input id="message" autocomplete="off" /><button>Envialo</button>
-    </form>
-    <script src="/socket.io/socket.io.js"></script>
-    
-    <script> "Sala de chat" </script>
-    
-    <script>
-var socket = io();
-var form = document.getElementById('form');
-var input = document.getElementById('input');
-
-socket.emit('new user', 'miNombreDeUsuario')
-
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    if (input.value.startwith('/p ')) {
-        var parts = input.value.split(' ')
-        var recipient = parts[1]
-        var msg = parts.slice(2).join(' ')
-        socket.emit('private message', recipient, msg)
-        input.value = ' '
-    }
-});
-
-socket.on('chat message', function(msg) {
-    var item = document.createElement('li');
-    item.textContent = msg;
-    document.getElementById('chat').appendChild(item);
-    window.scrollTo(0, document.body.scrollHeight);
-});
-    </script>
-  </body>
+    <h1>Bienvenido a nuestra aplicación de chat</h1>
+    <a href="/login.html">Iniciar Sesión</a>
+    <a href="/register.html">Registrarse</a>
+    <a href="/chat.html">Chat</a>
+</body>
 </html>
