@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>registrarse</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form input[type="text"], form input[type="password"] {
+    width: 100%;
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+form button {
+    width: 100%;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+}
+    </style>
+</head>
+<body> <form id="register-form">
+    <input type="text" id="username" placeholder="Nombre de usuario" required>
+    <input type="password" id="password" placeholder="Contraseña" required>
+    <button type="submit">Registrarse</button>
+</form>
+
+<script>
+    var registerForm = document.getElementById('register-form')
+    var usernameInput = document.getElementById('username')
+    var passwordInput = document.getElementById('password')
+
+    registerForm.addEventListener('submit', function(e) {
+        e.preventDefault()
+
+        var username = usernameInput.value
+        var password = passwordInput.value
+
+        fetch('/auth/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username: username, password: password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                alert(data.message)
+                if (data.message === 'Registro exitoso' ) {
+                    window.location.href = '/login.html'
+                }
+            } else {
+             console.error(data)
+            }
+        })
+        .catch((error) => {
+            console.log('Error', error)
+        })
+    })
+</script>
+    
+</body>
+</html>
