@@ -41,8 +41,12 @@
     </style>
 </head>
 <body>
-    <h1>Bienbenido al chat</h1>
-    <div class ="chat-container"></div>
+    <h1>Bienvenido al chat</h1>
+    <div class ="chat-container">
+        <div class="message">Hola, ¿cómo estás?</div>
+    </div>
+    <h1>Escribe aqui</h1>
+    <ul id="messages"></ul>
     <form id="form">
         <input id="input" autocomplete="off" /><button>Enviar</button>
     </form>
@@ -51,9 +55,12 @@
         var socket = io();
         var form = document.getElementById('form');
         var input = document.getElementById('input');
+        var messages = document.getElementById('messages')
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
+
+            
             if (input.value) {
                 socket.emit('chat message', 'miSala', input.value);
                 input.value = '';

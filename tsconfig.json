@@ -11,6 +11,6 @@
             "@DB":["./DB/index.ts"]
         }
     },
-    "include": ["src/**/*.ts"],
+    "include": ["src/**/*.ts", "DB/**/*.ts", "src/**/*.html"],
     "exclude": ["node_modules"]
 }
